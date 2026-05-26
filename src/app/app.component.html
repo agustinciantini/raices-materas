@@ -1,0 +1,122 @@
+<!-- Encabezado superior -->
+<div class="top-bar text-center py-3">
+  <a class="navbar-brand d-inline-flex align-items-center justify-content-center" routerLink="/">
+    <img src="assets/img/logo.png" alt="Logo mate" width="120" height="120" class="me-2 logo-img">
+    <span class="brand-title">Raíces Materas</span>
+  </a>
+</div>
+
+<!-- Barra de navegación inferior -->
+<nav class="navbar navbar-expand-lg navbar-white custom-navbar py-2">
+  <div class="container justify-content-between">
+
+    <!-- Menú hamburguesa -->
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Enlaces -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav gap-4">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/productos" routerLinkActive="active">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contacto" routerLinkActive="active">Contacto</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Carrito -->
+    <div class="d-flex align-items-center gap-3 position-relative">
+      <button class="btn btn-outline-light position-relative" (click)="toggleCarrito()" title="Carrito de compras">
+        <i class="bi bi-cart3 fs-5"></i>
+        <span *ngIf="cantidadEnCarrito > 0"
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          {{ cantidadEnCarrito }}
+        </span>
+      </button>
+
+      <!-- Carrito desplegable -->
+      <div *ngIf="mostrarCarrito" class="position-absolute" style="top: 100%; right: 0; z-index: 1050; margin-top: 0.5rem;">
+        <div class="card shadow-sm border-0" style="width: 300px;">
+          <div class="card-header bg-success text-white py-2 d-flex justify-content-between align-items-center">
+            <span>Carrito</span>
+            <button class="btn-close btn-close-white btn-sm" (click)="mostrarCarrito = false" aria-label="Cerrar"></button>
+          </div>
+          <div style="max-height: 340px; overflow-y: auto;">
+            <div class="card-body p-3" *ngIf="carrito.listaCarrito.value.length > 0; else carritoVacio">
+              <div *ngFor="let item of carrito.listaCarrito.value" class="d-flex justify-content-between small mb-2">
+                <div>
+                  <strong>{{ item.nombre }}</strong><br>
+                  <span class="text-muted">x{{ item.cantidad }}</span>
+                </div>
+                <span>{{ item.precio * item.cantidad | currency }}</span>
+              </div>
+              <hr class="my-2">
+              <a routerLink="/carrito" class="btn btn-sm btn-outline-success w-100">Ir al carrito</a>
+            </div>
+            <ng-template #carritoVacio>
+              <p class="text-muted text-center small py-3">Tu carrito está vacío</p>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<!-- ---------------contenido---------- -->
+
+<div class="contenedor-listado">
+  <router-outlet ></router-outlet>
+</div>
+
+<!-- ---------footer----------------- -->
+<footer class="custom-footer bg-light text-dark pt-5 pb-4 mt-5 border-top">
+  <div class="container">
+    <div class="row gy-4">
+
+      <!-- Marca y descripción -->
+      <div class="col-md-4">
+        <h5 class="fw-bold text-success">Raíces Materas</h5>
+        <p class="text-muted small">
+          Tu lugar para encontrar las mejores mates, bombillas y más. Nos apasiona el mate, como a vos.
+        </p>
+      </div>
+
+      <!-- Navegación -->
+      <div class="col-md-4">
+        <h6 class="fw-bold text-success mb-3">Navegación</h6>
+        <ul class="list-unstyled footer-links">
+          <li><a routerLink="/" routerLinkActive="active">Inicio</a></li>
+          <li><a routerLink="/productos" routerLinkActive="active">Productos</a></li>
+          <li><a routerLink="/contacto" routerLinkActive="active">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="col-md-4">
+        <h6 class="fw-bold text-success mb-3">Seguinos</h6>
+        <div class="d-flex gap-3">
+          <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="my-4" />
+
+    <p class="text-center small text-muted mb-0">
+      © 2026 <strong>Raíces Materas</strong> — Todos los derechos reservados.
+    </p>
+  </div>
+</footer>

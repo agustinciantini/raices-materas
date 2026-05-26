@@ -1,0 +1,100 @@
+.top-bar {
+  background-color: #eacab0;
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Espacio entre el logo y el título */
+
+  .logo-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain; /* Evita que el logo se deforme */
+  }
+
+  .brand-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4f421e;
+    font-family: 'Georgia', serif;
+  }
+}
+
+}
+
+.custom-navbar {
+  background: linear-gradient(90deg, #f5e8d6, #eacab028); // verde menta degradado
+  border-radius: 0 0 16px 16px;
+
+  .nav-link {
+    color: #5a3e14;
+    font-weight: 500;
+    transition: color 0.3s ease;
+
+    &:hover,
+    &.active {
+      color: #ae7f27;
+    }
+  }
+
+  .btn-outline-light {
+    border-color: #eacab0;
+    color: #eacab0;
+
+    &:hover {
+      background-color: #eacab0;
+      color: #fff;
+    }
+  }
+
+  .navbar-toggler {
+    border-color: #eacab0;
+    color: #eacab0;
+  }
+}
+
+
+
+
+table {
+  th, td {
+    vertical-align: middle;
+    text-align: center;
+  }
+}
+
+// footer 
+.custom-footer {
+  background-color: #f8f9fa;
+
+  .footer-links {
+    li {
+      margin-bottom: 0.5rem;
+
+      a {
+        color: #6c757d;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #eacab0; // Bootstrap success
+        }
+      }
+    }
+  }
+
+  .social-icon {
+    font-size: 1.4rem;
+    color: #eacab0;
+    transition: transform 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      transform: scale(1.15);
+      color: #0a3622; // dark success
+    }
+  }
+
+  hr {
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+}

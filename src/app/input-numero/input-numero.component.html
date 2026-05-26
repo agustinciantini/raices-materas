@@ -1,0 +1,25 @@
+<div class="cantidad-selector d-flex justify-content-center align-items-center gap-2 mb-3">
+  <!-- Botón - -->
+  <button
+    class="btn-cantidad"
+    (click)="disminuirCantidad()"
+    [disabled]="cantidad <= min">
+    <i class="bi bi-dash"></i>
+  </button>
+
+  <!-- Input editable -->
+  <input type="number"
+    class="form-control cantidad-input text-center"
+    [(ngModel)]="cantidad"
+    [min]="min"
+    [max]="max"
+    (ngModelChange)="validarCantidad()" />
+
+  <!-- Botón + -->
+  <button
+    class="btn-cantidad"
+    (click)="aumentarCantidad()"
+    [disabled]="cantidad >= max">
+    <i class="bi bi-plus"></i>
+  </button>
+</div>
